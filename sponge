@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+use v5.18;
+use strict;
+use warnings;
+
+die unless 1 == @ARGV;
+
+my $file = shift @ARGV;
+
+my $contents;
+{
+	local $/;
+	$contents = <>;
+}
+
+open my $fh, '>', $file or die "$!";
+
+print $fh $contents;
+
+close $fh;
