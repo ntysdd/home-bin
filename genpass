@@ -1,0 +1,22 @@
+#!/usr/bin/java --source 8
+import java.security.SecureRandom;
+public class GenPass {
+    public static void main(String[] args) {
+        SecureRandom rand = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 'a'; i <= 'z'; i++) {
+            sb.append((char) i);
+            sb.append((char) (i - 'a' + 'A'));
+        }
+        for (int i = '0'; i <= '9'; i++) {
+            sb.append((char) i);
+        }
+        String chars = sb.toString();
+        sb.setLength(0);
+        for (int i = 0; i <= 10; i++) {
+            char ch = chars.charAt(rand.nextInt(chars.length()));
+            sb.append(ch);
+        }
+        System.out.println(sb.toString());
+    }
+}
